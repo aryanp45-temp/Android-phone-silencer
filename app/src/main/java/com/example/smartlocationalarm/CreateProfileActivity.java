@@ -82,10 +82,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import hotchemi.android.rate.AppRate;
 
-
-public class CreateAlarmActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class CreateProfileActivity extends AppCompatActivity implements OnMapReadyCallback {
     private double lat = 0, log = 0;
 
     private GoogleMap mMap;
@@ -120,14 +118,7 @@ public class CreateAlarmActivity extends AppCompatActivity implements OnMapReady
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_alarm);
-        AppRate.with(this)
-                .setInstallDays(0)
-                .setLaunchTimes(10)
-                .setRemindInterval(5)
-                .setShowLaterButton(true)
-                .monitor();
-        AppRate.showRateDialogIfMeetsConditions(this);
+        setContentView(R.layout.activity_create_profile);
         final Context c = this;
         final Activity a = this;
 
@@ -152,25 +143,14 @@ public class CreateAlarmActivity extends AppCompatActivity implements OnMapReady
                         return true;
 
                     case R.id.allalarms:
-                        Intent intent3 = new Intent(CreateAlarmActivity.this, alarmListActivity.class);
+                        Intent intent3 = new Intent(CreateProfileActivity.this, profileListActivity.class);
                         startActivity(intent3);
                         return true;
                     case R.id.setting:
                         Intent intent4 = new Intent(getApplicationContext(), SettingsActivity.class);
                         startActivity(intent4);
                         return true;
-//                    case R.id.rating:
-//                        AppRate.with(c).showRateDialog(a);
-//                        return true;
-//                    case R.id.share:
-//                        Intent i = new Intent(Intent.ACTION_SEND);
-//                        i.setType("text/plain");
-//                        i.putExtra(Intent.EXTRA_SUBJECT, "Smart Location Alarm");
-//                        String message = "\nI would like to recommend this Smart Location Alarm app to you, soon we will put it in play store. \n\n";
-//
-//                        i.putExtra(Intent.EXTRA_TEXT, message);
-//                        startActivity(Intent.createChooser(i, "Share with others"));
-//                        return true;
+
                     case R.id.about:
                         Intent intent5 = new Intent(getApplicationContext(), AboutActivity.class);
                         startActivity(intent5);
@@ -190,8 +170,8 @@ public class CreateAlarmActivity extends AppCompatActivity implements OnMapReady
         mapFragment.getMapAsync(this);
         mapView = mapFragment.getView();
 
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(CreateAlarmActivity.this);
-        Places.initialize(CreateAlarmActivity.this, getString(R.string.google_maps_key));
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(CreateProfileActivity.this);
+        Places.initialize(CreateProfileActivity.this, getString(R.string.google_maps_key));
         placesClient = Places.createClient(this);
         final AutocompleteSessionToken token = AutocompleteSessionToken.newInstance();
         materialSearchBar.setOnSearchActionListener(new MaterialSearchBar.OnSearchActionListener() {
@@ -205,7 +185,7 @@ public class CreateAlarmActivity extends AppCompatActivity implements OnMapReady
                 String location = text.toString();
                 List<Address> addressList = null;
                 if(location != null || !location.equals("")){
-                    Geocoder geocoder = new Geocoder(CreateAlarmActivity.this);
+                    Geocoder geocoder = new Geocoder(CreateProfileActivity.this);
                     try{
                         addressList = geocoder.getFromLocationName(location, 1);
                     } catch (IOException e){
@@ -217,7 +197,7 @@ public class CreateAlarmActivity extends AppCompatActivity implements OnMapReady
                         mMap.addMarker(new MarkerOptions().position(latLng).title(location));
                         mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
                     } else {
-                        Toast.makeText(CreateAlarmActivity.this, "No result found", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreateProfileActivity.this, "No result found", Toast.LENGTH_SHORT).show();
                     }
                 }
                 //startSearch(text.toString(), true, null, true);
@@ -340,7 +320,7 @@ public class CreateAlarmActivity extends AppCompatActivity implements OnMapReady
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         String uniqueId = prefs.getString("UUID", "alarm");
         TextView txtclose;
-        myDialog.setContentView(R.layout.create_alarm_popup);
+        myDialog.setContentView(R.layout.create_profile_popup);
         alarmName = myDialog.findViewById(R.id.alarmName);
         alarmNotes = myDialog.findViewById(R.id.alarmNotes);
         txtclose =(TextView) myDialog.findViewById(R.id.txtclose);
@@ -378,12 +358,12 @@ public class CreateAlarmActivity extends AppCompatActivity implements OnMapReady
                     alarm.setLongitude(String.valueOf(log));
                     alarm.setStatus(true);
                     reff.child(String.valueOf(mid + 1)).setValue(alarm);
-                    Toast.makeText(CreateAlarmActivity.this, "saved successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateProfileActivity.this, "saved successfully", Toast.LENGTH_SHORT).show();
                     addNotification(String.valueOf(radius));
-                    Intent intent=new Intent(CreateAlarmActivity.this,MapsActivity.class);
+                    Intent intent=new Intent(CreateProfileActivity.this,MapsActivity.class);
                     startActivity(intent);
 //
-//                    Toast.makeText(CreateAlarmActivity.this, alarmName.getText().toString() + " " + alarmNotes.getText().toString() + " " + radius,
+//                    Toast.makeText(CreateProfileActivity.this, alarmName.getText().toString() + " " + alarmNotes.getText().toString() + " " + radius,
 //                                   Toast.LENGTH_SHORT).show();
                 }
             }
@@ -403,7 +383,7 @@ public class CreateAlarmActivity extends AppCompatActivity implements OnMapReady
             }
 
             public void onStopTrackingTouch(SeekBar seekBar) {
-                //Toast.makeText(CreateAlarmActivity.this, "Radius bar progress is :" + progressChangedValue,
+                //Toast.makeText(CreateProfileActivity.this, "Radius bar progress is :" + progressChangedValue,
                  //       Toast.LENGTH_SHORT).show();
             }
         });
@@ -434,23 +414,23 @@ public class CreateAlarmActivity extends AppCompatActivity implements OnMapReady
 
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder().addLocationRequest(locationRequest);
 
-        SettingsClient settingsClient = LocationServices.getSettingsClient(CreateAlarmActivity.this);
+        SettingsClient settingsClient = LocationServices.getSettingsClient(CreateProfileActivity.this);
         Task<LocationSettingsResponse> task = settingsClient.checkLocationSettings(builder.build());
 
-        task.addOnSuccessListener(CreateAlarmActivity.this, new OnSuccessListener<LocationSettingsResponse>() {
+        task.addOnSuccessListener(CreateProfileActivity.this, new OnSuccessListener<LocationSettingsResponse>() {
             @Override
             public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
                 getDeviceLocation();
             }
         });
 
-        task.addOnFailureListener(CreateAlarmActivity.this, new OnFailureListener() {
+        task.addOnFailureListener(CreateProfileActivity.this, new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 if (e instanceof ResolvableApiException) {
                     ResolvableApiException resolvable = (ResolvableApiException) e;
                     try {
-                        resolvable.startResolutionForResult(CreateAlarmActivity.this, 51);
+                        resolvable.startResolutionForResult(CreateProfileActivity.this, 51);
                     } catch (IntentSender.SendIntentException e1) {
                         e1.printStackTrace();
                     }
@@ -483,9 +463,9 @@ public class CreateAlarmActivity extends AppCompatActivity implements OnMapReady
                 public void onMapLongClick(LatLng point) {
                     log = point.longitude;
                     lat = point.latitude;
-                    Toast.makeText(CreateAlarmActivity.this,point.latitude + ", " + point.longitude, Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreateProfileActivity.this,point.latitude + ", " + point.longitude, Toast.LENGTH_LONG).show();
                     ShowPopup(mapView);
-                    /*setResult(CreateAlarmActivity.RESULT_OK, new Intent().putExtra("latitude", point.latitude).putExtra("longitude", point.longitude));
+                    /*setResult(CreateProfileActivity.RESULT_OK, new Intent().putExtra("latitude", point.latitude).putExtra("longitude", point.longitude));
 
                     if(getlocation.equals("true")){
 
@@ -557,7 +537,7 @@ public class CreateAlarmActivity extends AppCompatActivity implements OnMapReady
 
                             }
                         } else {
-                            Toast.makeText(CreateAlarmActivity.this, "Unable to get last location", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateProfileActivity.this, "Unable to get last location", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -567,8 +547,8 @@ public class CreateAlarmActivity extends AppCompatActivity implements OnMapReady
         String notif_text = "You have programmed an alarm: " + dist + " meters! Come see what it's all about.";
         String notif_title = "New Alarm";
 
-        Intent intent = new Intent(this, alarmListActivity.class);
-        PendingIntent pdIntent = PendingIntent.getActivity(CreateAlarmActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent intent = new Intent(this, profileListActivity.class);
+        PendingIntent pdIntent = PendingIntent.getActivity(CreateProfileActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.alarm)
@@ -612,7 +592,7 @@ public class CreateAlarmActivity extends AppCompatActivity implements OnMapReady
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, CreateAlarmActivity.class);
+        Intent intent = new Intent(this, CreateProfileActivity.class);
         startActivity(intent);
     }
 

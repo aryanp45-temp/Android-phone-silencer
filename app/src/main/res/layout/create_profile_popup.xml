@@ -31,7 +31,7 @@
             android:layout_marginLeft="12dp"
             android:layout_marginBottom="-5dp"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="Alarm name :"
+            android:text="Profile name :"
             android:textColor="#1A237E"
             android:textSize="13dp" />
 
@@ -99,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="25dp"
-        android:text="Create  alarm"
+        android:text="Create Profile"
         android:background="@drawable/gradient"
         android:textSize="10dp"
         android:textColor="#1A237E" />

@@ -10,12 +10,12 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class turnAlarmeOffActivity extends AppCompatActivity {
+public class turnProfileOffActivity extends AppCompatActivity {
     Button turn_;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_turn_alarme_off);
+        setContentView(R.layout.activity_turn_profile_off);
 
         final String s = ((MyApplication) this.getApplication()).getId();
 
@@ -24,7 +24,7 @@ public class turnAlarmeOffActivity extends AppCompatActivity {
         turn_.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new firebaseDatabaseHelper(turnAlarmeOffActivity.this).deleteAlarm(s, new firebaseDatabaseHelper.DataStatus() {
+                new firebaseDatabaseHelper(turnProfileOffActivity.this).deleteAlarm(s, new firebaseDatabaseHelper.DataStatus() {
                     @Override
                     public void DataIsLoaded(List<alarm> alarms, List<String> keys) {
 
@@ -42,8 +42,8 @@ public class turnAlarmeOffActivity extends AppCompatActivity {
 
                     @Override
                     public void DataIsDeleted() {
-                        Toast.makeText(turnAlarmeOffActivity.this, "alarm has been truned off successfully", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(turnAlarmeOffActivity.this, MainActivity.class);
+                        Toast.makeText(turnProfileOffActivity.this, "alarm has been truned off successfully", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(turnProfileOffActivity.this, MainActivity.class);
                         startActivity(intent);
 
                     }

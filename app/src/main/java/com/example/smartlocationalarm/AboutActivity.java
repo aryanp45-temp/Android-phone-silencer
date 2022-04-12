@@ -58,7 +58,7 @@ public class AboutActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.allalarms:
-                        Intent intent3 = new Intent(AboutActivity.this, alarmListActivity.class);
+                        Intent intent3 = new Intent(AboutActivity.this, profileListActivity.class);
                         startActivity(intent3);
                         return true;
                     case R.id.setting:
@@ -83,11 +83,7 @@ public class AboutActivity extends AppCompatActivity {
                 .addItem(new Element().setTitle("Version 1.0"))
                 .addGroup("Contact")
                 .addEmail("ayushbhavsar299@gmail.com")
-               .addWebsite("https://github.com/ayushbhavsar299")
-//                .addFacebook("adnaneaabbar")
-                //.addPlayStore("en attendant un lien vers playstore")
-//                .addInstagram("_seaholic")
-//                .addGitHub("AIT-RAMI/Smart-Location-Alarm")
+               .addWebsite("https://github.com/AryanP45/Android-phone-silencer")
                 .create();
 
         ViewGroup aboutView = findViewById(R.id.aboutView);

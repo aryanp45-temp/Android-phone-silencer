@@ -13,24 +13,24 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switch1"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Dark Mode" />
+<!--        <androidx.appcompat.widget.SwitchCompat-->
+<!--            android:id="@+id/switch1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:text="Dark Mode" />-->
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switch2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="Vibreur" />
+            android:text="Vibrate" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
             android:gravity="center"
-            android:text="Alarm Volume"
+            android:text="Profile Volume"
             android:textStyle="bold" />
 
         <SeekBar

@@ -12,9 +12,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.provider.Settings;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.karumi.dexter.Dexter;
@@ -32,7 +30,7 @@ public class PermissionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_permission);
         if(ContextCompat.checkSelfPermission(PermissionActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-            startActivity(new Intent(PermissionActivity.this, CreateAlarmActivity.class));
+            startActivity(new Intent(PermissionActivity.this, CreateProfileActivity.class));
             finish();
             return;
         }
@@ -47,7 +45,7 @@ public class PermissionActivity extends AppCompatActivity {
                         .withListener(new PermissionListener() {
                             @Override
                             public void onPermissionGranted(PermissionGrantedResponse response) {
-                                startActivity(new Intent(PermissionActivity.this, CreateAlarmActivity.class));
+                                startActivity(new Intent(PermissionActivity.this, CreateProfileActivity.class));
                                 finish();
                             }
 

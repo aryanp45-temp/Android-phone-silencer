@@ -69,7 +69,7 @@ public class SettingsActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.allalarms:
-                        Intent intent3 = new Intent(SettingsActivity.this, alarmListActivity.class);
+                        Intent intent3 = new Intent(SettingsActivity.this, profileListActivity.class);
                         startActivity(intent3);
                         return true;
                     case R.id.setting:
@@ -112,27 +112,27 @@ public class SettingsActivity extends AppCompatActivity {
         state1 = pref.getBoolean("s1", false);
         state2 = pref.getBoolean("s2", false);
 
-        s1 = findViewById(R.id.switch1);
+//        s1 = findViewById(R.id.switch1);
         s2 = findViewById(R.id.switch2);
 
-        s1.setChecked(state1);
+//        s1.setChecked(state1);
         s2.setChecked(state2);
 
-        s1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                }
-                state1 = !state1;
-                s1.setChecked(state1);
-                SharedPreferences.Editor ed = pref.edit();
-                ed.putBoolean("s1", state1);
-                ed.apply();
-            }
-        });
+//        s1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//                } else {
+//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//                }
+//                state1 = !state1;
+//                s1.setChecked(state1);
+//                SharedPreferences.Editor ed = pref.edit();
+//                ed.putBoolean("s1", state1);
+//                ed.apply();
+//            }
+//        });
 
         s2.setOnClickListener(new View.OnClickListener() {
             final AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);

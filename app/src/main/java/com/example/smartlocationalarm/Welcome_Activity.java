@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -15,45 +13,21 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
-import hotchemi.android.rate.AppRate;
-
 public class Welcome_Activity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle toggle;
     NavigationView nv;
     // Test Are
-//    Button serviceTest;
+
     // End Test Area
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_);
         // Test Area
-//        serviceTest = findViewById(R.id.serviceTest);
-//        final Intent intent = new Intent(this, MyService.class);
         final Intent intent = new Intent(this, BackgroundLocationUpdateService.class);
-        //startService(intent);
 
-//        serviceTest.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startService(intent);
-//                /*stopService(intent);
-//                intent.putExtra("alarmHour", Calendar.getInstance().getTime().getHours());
-//                intent.putExtra("alarmMinute", Calendar.getInstance().getTime().getMinutes() + 1);
-//                startService(intent);*/
-//            }
-//
-//        });
-
-//        AppRate.with(this)
-//                .setInstallDays(0)
-//                .setLaunchTimes(10)
-//                .setRemindInterval(5)
-//                .setShowLaterButton(true)
-//                .monitor();
-//        AppRate.showRateDialogIfMeetsConditions(this);
         final Context c = this;
         final Activity a = this;
 
@@ -78,7 +52,7 @@ public class Welcome_Activity extends AppCompatActivity {
                         return true;
 
                     case R.id.allalarms:
-                        Intent intent3 = new Intent(Welcome_Activity.this, alarmListActivity.class);
+                        Intent intent3 = new Intent(Welcome_Activity.this, profileListActivity.class);
                         startActivity(intent3);
                         return true;
                     case R.id.setting:

@@ -82,34 +82,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private DatabaseReference databaseReference;
 
 
-//    public void readAlarms() {
-//        firebaseDatabase = firebaseDatabase.getInstance();
-//        databaseReference = firebaseDatabase.getReference().child("alarm");
-//        Toast.makeText(this, "databaseLoaded", Toast.LENGTH_SHORT).show();
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                alarms.clear();
-//                longitudes.clear();
-//                latitudes.clear();
-//                names.clear();
-//                List<String> keys = new ArrayList<>();
-//                for (DataSnapshot keyNode : dataSnapshot.getChildren()) {
-//                    keys.add(keyNode.getKey());
-//                    alarm mAlarm = keyNode.getValue(alarm.class);
-//                    alarms.add(mAlarm);
-//                }
-//                int a = alarms.size();
-//                Log.d("aaaaaaaa", String.valueOf(a));
-//                int h = 0;
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//            }
-//        });
-//    }
-
 ////////////////////////////////////////////////////////////////////////////////////////////
 
     private Executor executor;
@@ -122,7 +94,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         if (mLocationPermissionsGranted) {
-            checkingIdentity();
+//            checkingIdentity();
+            getDeviceLocation();
 
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                     != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
@@ -175,7 +148,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         return true;
 
                     case R.id.allalarms:
-                        Intent intent3 = new Intent(MapsActivity.this, alarmListActivity.class);
+                        Intent intent3 = new Intent(MapsActivity.this, profileListActivity.class);
                         startActivity(intent3);
                         return true;
                     case R.id.setting:
@@ -209,14 +182,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(MapsActivity.this, CreateAlarmActivity.class);
+                Intent intent1 = new Intent(MapsActivity.this, CreateProfileActivity.class);
                 startActivity(intent1);
             }
         });
         mSaved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(MapsActivity.this, alarmListActivity.class);
+                Intent intent2 = new Intent(MapsActivity.this, profileListActivity.class);
                 intent2.putExtra("id", uniqueId);
                 startActivity(intent2);
             }

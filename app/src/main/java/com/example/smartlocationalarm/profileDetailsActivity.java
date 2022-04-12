@@ -40,7 +40,7 @@ import java.util.List;
 
 import hotchemi.android.rate.AppRate;
 
-public class alarmDetailsActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class profileDetailsActivity extends AppCompatActivity implements OnMapReadyCallback {
     GoogleMap mMap;
     private EditText editName, editNotes, editRadius;
     private ImageButton btn_edit, btn_delete;
@@ -54,7 +54,7 @@ public class alarmDetailsActivity extends AppCompatActivity implements OnMapRead
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alarm_details);
+        setContentView(R.layout.activity_profile_details);
         AppRate.with(this)
                 .setInstallDays(0)
                 .setLaunchTimes(10)
@@ -86,7 +86,7 @@ public class alarmDetailsActivity extends AppCompatActivity implements OnMapRead
                         return true;
 
                     case R.id.allalarms:
-                        Intent intent3 = new Intent(alarmDetailsActivity.this, alarmListActivity.class);
+                        Intent intent3 = new Intent(profileDetailsActivity.this, profileListActivity.class);
                         startActivity(intent3);
                         return true;
                     case R.id.setting:
@@ -149,7 +149,7 @@ public class alarmDetailsActivity extends AppCompatActivity implements OnMapRead
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(alarmDetailsActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(profileDetailsActivity.this);
                 builder.setMessage("are you sure you want to edit this alarm ?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -161,7 +161,7 @@ public class alarmDetailsActivity extends AppCompatActivity implements OnMapRead
                         alarm.setLatitude(latitude);
                         alarm.setStatus(status);
 
-                        new firebaseDatabaseHelper(alarmDetailsActivity.this).updateAlarm(key, alarm, new firebaseDatabaseHelper.DataStatus() {
+                        new firebaseDatabaseHelper(profileDetailsActivity.this).updateAlarm(key, alarm, new firebaseDatabaseHelper.DataStatus() {
                             @Override
                             public void DataIsLoaded(List<com.example.smartlocationalarm.alarm> alarms, List<String> keys) {
 
@@ -174,8 +174,8 @@ public class alarmDetailsActivity extends AppCompatActivity implements OnMapRead
 
                             @Override
                             public void DataIsUpdated() {
-                                Toast.makeText(alarmDetailsActivity.this, "alarm has been updated successfully", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(alarmDetailsActivity.this, alarmListActivity.class);
+                                Toast.makeText(profileDetailsActivity.this, "alarm has been updated successfully", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(profileDetailsActivity.this, profileListActivity.class);
                                 startActivity(intent);
 
                             }
@@ -204,11 +204,11 @@ public class alarmDetailsActivity extends AppCompatActivity implements OnMapRead
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(alarmDetailsActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(profileDetailsActivity.this);
                 builder.setMessage("are you sure you want to delete this alarm ?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        new firebaseDatabaseHelper(alarmDetailsActivity.this).deleteAlarm(key, new firebaseDatabaseHelper.DataStatus() {
+                        new firebaseDatabaseHelper(profileDetailsActivity.this).deleteAlarm(key, new firebaseDatabaseHelper.DataStatus() {
                             @Override
                             public void DataIsLoaded(List<alarm> alarms, List<String> keys) {
 
@@ -226,8 +226,8 @@ public class alarmDetailsActivity extends AppCompatActivity implements OnMapRead
 
                             @Override
                             public void DataIsDeleted() {
-                                Toast.makeText(alarmDetailsActivity.this, "alarm has been deleted successfully", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(alarmDetailsActivity.this, alarmListActivity.class);
+                                Toast.makeText(profileDetailsActivity.this, "alarm has been deleted successfully", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(profileDetailsActivity.this, profileListActivity.class);
                                 startActivity(intent);
 
                             }
@@ -251,7 +251,7 @@ public class alarmDetailsActivity extends AppCompatActivity implements OnMapRead
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, alarmListActivity.class);
+        Intent intent = new Intent(this, profileListActivity.class);
         startActivity(intent);
     }
 
@@ -289,7 +289,7 @@ public class alarmDetailsActivity extends AppCompatActivity implements OnMapRead
     }
 
     private void clickCreate() {
-        Intent intent = new Intent(this, alarmListActivity.class);
+        Intent intent = new Intent(this, profileListActivity.class);
         this.startActivity(intent);
     }
 

@@ -24,7 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".turnAlarmeOffActivity"></activity>
+        <activity android:name=".turnProfileOffActivity"></activity>
 
         <service
             android:name=".BackgroundLocationUpdateService"
@@ -43,10 +43,10 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".alarmDetailsActivity"
+            android:name=".profileDetailsActivity"
             android:label="Alarm Details" />
         <activity
-            android:name=".alarmListActivity"
+            android:name=".profileListActivity"
             android:label="All Profile" />
         <activity
             android:name=".SettingsActivity"
@@ -63,7 +63,7 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".CreateAlarmActivity"
+            android:name=".CreateProfileActivity"
             android:label="@string/title_activity_create_alarm" />
         <activity android:name=".PermissionActivity" />
         <activity

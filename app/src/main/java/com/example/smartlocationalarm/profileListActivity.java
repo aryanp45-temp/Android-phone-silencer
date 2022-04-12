@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricPrompt;
-import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,7 +23,7 @@ import java.util.concurrent.Executor;
 
 import hotchemi.android.rate.AppRate;
 
-public class alarmListActivity extends AppCompatActivity {
+public class profileListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle toggle;
@@ -35,7 +34,7 @@ public class alarmListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alarm_list);
+        setContentView(R.layout.activity_profile_list);
         AppRate.with(this)
                 .setInstallDays(0)
                 .setLaunchTimes(10)
@@ -68,7 +67,7 @@ public class alarmListActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.allalarms:
-                        Intent intent3 = new Intent(alarmListActivity.this, alarmListActivity.class);
+                        Intent intent3 = new Intent(profileListActivity.this, profileListActivity.class);
                         startActivity(intent3);
                         return true;
                     case R.id.setting:
@@ -109,7 +108,7 @@ public class alarmListActivity extends AppCompatActivity {
         /*
 
         executor = ContextCompat.getMainExecutor(this);
-        biometricPrompt = new BiometricPrompt(alarmListActivity.this,
+        biometricPrompt = new BiometricPrompt(profileListActivity.this,
                 executor, new BiometricPrompt.AuthenticationCallback() {
             @Override
             public void onAuthenticationError(int errorCode,
@@ -202,10 +201,10 @@ public class alarmListActivity extends AppCompatActivity {
         }
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         String uniqueId = prefs.getString("UUID", "alarm");
-        new firebaseDatabaseHelper(alarmListActivity.this).readAlarms(new firebaseDatabaseHelper.DataStatus() {
+        new firebaseDatabaseHelper(profileListActivity.this).readAlarms(new firebaseDatabaseHelper.DataStatus() {
             @Override
             public void DataIsLoaded(List<alarm> alarms, List<String> keys) {
-                new RecyclerView_Config().setConfig(recyclerView, alarmListActivity.this, alarms, keys);
+                new RecyclerView_Config().setConfig(recyclerView, profileListActivity.this, alarms, keys);
             }
 
             @Override

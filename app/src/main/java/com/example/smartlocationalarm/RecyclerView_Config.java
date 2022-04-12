@@ -36,7 +36,7 @@ public class RecyclerView_Config {
         private String key;
 
         public alarmItemView(ViewGroup parent) {
-            super(LayoutInflater.from(mContext).inflate(R.layout.alarm_list_item, parent, false));
+            super(LayoutInflater.from(mContext).inflate(R.layout.profile_list_item, parent, false));
 
             name_ = itemView.findViewById(R.id.name_txt);
             note_ = itemView.findViewById(R.id.note_txt);
@@ -46,7 +46,7 @@ public class RecyclerView_Config {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(mContext, alarmDetailsActivity.class);
+                    Intent intent = new Intent(mContext, profileDetailsActivity.class);
                     intent.putExtra("key", key);
                     intent.putExtra("name", name_.getText().toString());
                     intent.putExtra("notes", note_.getText().toString());
