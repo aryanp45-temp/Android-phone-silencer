@@ -1,12 +1,16 @@
 package com.example.smartlocationalarm;
 
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -21,12 +25,17 @@ public class Welcome_Activity extends AppCompatActivity {
     // Test Are
 
     // End Test Area
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_);
         // Test Area
         final Intent intent = new Intent(this, BackgroundLocationUpdateService.class);
+        NotificationManager nm= (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (!nm.isNotificationPolicyAccessGranted()){
+            startActivity(new Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS));
+        }
 
         final Context c = this;
         final Activity a = this;
@@ -71,6 +80,7 @@ public class Welcome_Activity extends AppCompatActivity {
         });
 
     }
+
 
     private void existing() {
         Intent intent = new Intent(this, MapsActivity.class);

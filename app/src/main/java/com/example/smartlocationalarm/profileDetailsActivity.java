@@ -55,13 +55,13 @@ public class profileDetailsActivity extends AppCompatActivity implements OnMapRe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_details);
-        AppRate.with(this)
-                .setInstallDays(0)
-                .setLaunchTimes(10)
-                .setRemindInterval(5)
-                .setShowLaterButton(true)
-                .monitor();
-        AppRate.showRateDialogIfMeetsConditions(this);
+//        AppRate.with(this)
+//                .setInstallDays(0)
+//                .setLaunchTimes(10)
+//                .setRemindInterval(5)
+//                .setShowLaterButton(true)
+//                .monitor();
+//        AppRate.showRateDialogIfMeetsConditions(this);
         final Context c = this;
         final Activity a = this;
 

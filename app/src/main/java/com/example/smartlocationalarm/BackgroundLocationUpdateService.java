@@ -12,6 +12,7 @@ import android.content.IntentSender;
 import android.location.Location;
 import android.location.LocationListener;
 import android.media.AudioAttributes;
+import android.media.AudioManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -51,11 +52,12 @@ import java.util.concurrent.TimeUnit;
 
 public class BackgroundLocationUpdateService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
-    /* Declare in manifest
+    /* Declared in manifest
     <service android:name=".BackgroundLocationUpdateService"/>
     */
+    AudioManager am=(AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
-    private final String TAG = "BackgroundLocationUpdtS";
+    private final String TAG = "BackgroundLocationUS";
     private final String TAG_LOCATION = "TAG_LOCATION";
     private Context context;
     private boolean stopService = false;
@@ -214,6 +216,8 @@ public class BackgroundLocationUpdateService extends Service implements GoogleAp
                         if (test(latDest, logDest, location.getLatitude(), location.getLongitude())<=radius) {
                             if (status) {
                                 Log.d(TAG_LOCATION, "I'm in range! the alarm should notify :)");
+                                /*Silent Mode code*/
+                                am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
                                 /* Notification Code*/
                                 final int notificationId = 1111;
 
