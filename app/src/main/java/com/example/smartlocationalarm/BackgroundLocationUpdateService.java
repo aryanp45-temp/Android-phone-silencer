@@ -85,6 +85,7 @@ public class BackgroundLocationUpdateService extends Service implements GoogleAp
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         StartForeground();
+        Log.d("back","service running");
         final Handler handler = new Handler();
         final Runnable runnable = new Runnable() {
             @Override

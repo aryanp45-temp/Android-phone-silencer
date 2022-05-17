@@ -31,7 +31,8 @@ public class Welcome_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_);
         // Test Area
-        final Intent intent = new Intent(this, BackgroundLocationUpdateService.class);
+        Intent intent = new Intent(this, BackgroundLocationUpdateService.class);
+
         NotificationManager nm= (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         if (!nm.isNotificationPolicyAccessGranted()){
             startActivity(new Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS));
