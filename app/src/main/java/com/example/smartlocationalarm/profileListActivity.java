@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,13 +36,13 @@ public class profileListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_list);
-        AppRate.with(this)
-                .setInstallDays(0)
-                .setLaunchTimes(10)
-                .setRemindInterval(5)
-                .setShowLaterButton(true)
-                .monitor();
-        AppRate.showRateDialogIfMeetsConditions(this);
+//        AppRate.with(this)
+//                .setInstallDays(0)
+//                .setLaunchTimes(10)
+//                .setRemindInterval(5)
+//                .setShowLaterButton(true)
+//                .monitor();
+//        AppRate.showRateDialogIfMeetsConditions(this);
         final Context c = this;
         final Activity a = this;
         String id = getIntent().getStringExtra("id");
@@ -105,7 +106,7 @@ public class profileListActivity extends AppCompatActivity {
         // After removing the alarm set
 
 
-        /*
+
 
         executor = ContextCompat.getMainExecutor(this);
         biometricPrompt = new BiometricPrompt(profileListActivity.this,
@@ -115,29 +116,34 @@ public class profileListActivity extends AppCompatActivity {
                                               @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
                 Toast.makeText(getApplicationContext(),
-                        "Erreur d'authentification:" + errString, Toast.LENGTH_SHORT)
+                        "Error while Authenticating" + errString, Toast.LENGTH_SHORT)
                         .show();
+                Intent intent = new Intent(profileListActivity.this, MainActivity.class);
+                startActivity(intent);
             }
 
             @Override
             public void onAuthenticationSucceeded(
                     @NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
-               /* Toast.makeText(getApplicationContext(),
-                        "C'est bien vous!", Toast.LENGTH_SHORT).show();
+               Toast.makeText(getApplicationContext(),
+                        "Authentication Successful !", Toast.LENGTH_SHORT).show();
                 showAlarms();
             }
 
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
-                Toast.makeText(getApplicationContext(), "Authentication échouée !",
+                Toast.makeText(getApplicationContext(), "Authentication Failed !",
                         Toast.LENGTH_SHORT)
                         .show();
+                Intent intent = new Intent(profileListActivity.this, MainActivity.class);
+                startActivity(intent);
+
             }
         });
 
-        rePromptInfo();*/
+        rePromptInfo();
     }
 
     @Override

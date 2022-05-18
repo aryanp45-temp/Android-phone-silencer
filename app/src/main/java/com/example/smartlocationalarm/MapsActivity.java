@@ -94,7 +94,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         if (mLocationPermissionsGranted) {
-//            checkingIdentity();
+            checkingIdentity();
             getDeviceLocation();
 
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -364,8 +364,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                               @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
                 Toast.makeText(getApplicationContext(),
-                        "Erreur d'authentification: " + errString, Toast.LENGTH_SHORT)
+                        "Error while Authenticating" + errString, Toast.LENGTH_SHORT)
                         .show();
+                Intent intent = new Intent(MapsActivity.this, MainActivity.class);
+                startActivity(intent);
+
             }
 
             @Override
@@ -373,16 +376,18 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     @NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(getApplicationContext(),
-                        "C'est bien vous!", Toast.LENGTH_SHORT).show();
+                        "Authentication Successful !", Toast.LENGTH_SHORT).show();
                 getDeviceLocation();
             }
 
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
-                Toast.makeText(getApplicationContext(), "Authentication échouée !",
+                Toast.makeText(getApplicationContext(), "Authentication Failed !",
                         Toast.LENGTH_SHORT)
                         .show();
+                Intent intent = new Intent(MapsActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
