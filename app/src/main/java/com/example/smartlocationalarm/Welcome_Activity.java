@@ -4,21 +4,28 @@ import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class Welcome_Activity extends AppCompatActivity {
+import java.util.List;
 
+public class Welcome_Activity extends AppCompatActivity {
+    private RecyclerView recyclerView;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle toggle;
     NavigationView nv;
@@ -31,7 +38,7 @@ public class Welcome_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_);
         // Test Area
-        Intent intent = new Intent(this, BackgroundLocationUpdateService.class);
+        Intent intent = new Intent(Welcome_Activity.this, BackgroundLocationUpdateService.class);
 
         NotificationManager nm= (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         if (!nm.isNotificationPolicyAccessGranted()){
@@ -79,9 +86,41 @@ public class Welcome_Activity extends AppCompatActivity {
                 }
             }
         });
-
+        showAlarms();
+        startService(intent);
     }
+    public void showAlarms() {
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView_alarms);
+        try {
+            recyclerView.addItemDecoration(new myDeviderItemDecoration(LinearLayoutManager.VERTICAL, this, 30));
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        String uniqueId = prefs.getString("UUID", "alarm");
+        new firebaseDatabaseHelper(Welcome_Activity.this).readAlarms(new firebaseDatabaseHelper.DataStatus() {
+            @Override
+            public void DataIsLoaded(List<alarm> alarms, List<String> keys) {
+                Log.d("alarmdata", "DataIsLoaded: "+alarms.toString());
+                    new RecyclerView_configMain().setConfig(recyclerView, Welcome_Activity.this, alarms, keys);
+            }
 
+            @Override
+            public void DataIsInserted() {
+
+            }
+
+            @Override
+            public void DataIsUpdated() {
+
+            }
+
+            @Override
+            public void DataIsDeleted() {
+
+            }
+        });
+    }
 
     private void existing() {
         Intent intent = new Intent(this, MapsActivity.class);
@@ -91,6 +130,7 @@ public class Welcome_Activity extends AppCompatActivity {
     private void clickCreate(){
         Intent intent = new Intent(this, PermissionActivity.class);
         this.startActivity(intent);
+
     }
 
     @Override

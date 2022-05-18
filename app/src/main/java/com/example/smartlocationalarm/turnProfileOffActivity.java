@@ -2,7 +2,9 @@ package com.example.smartlocationalarm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +14,7 @@ import java.util.List;
 
 public class turnProfileOffActivity extends AppCompatActivity {
     Button turn_;
+    AudioManager am;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +46,11 @@ public class turnProfileOffActivity extends AppCompatActivity {
                     @Override
                     public void DataIsDeleted() {
                         Toast.makeText(turnProfileOffActivity.this, "alarm has been truned off successfully", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(turnProfileOffActivity.this, MainActivity.class);
-                        startActivity(intent);
+                        am=(AudioManager) getSystemService(Context.AUDIO_SERVICE);
+                        am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+                        finishAffinity();
+//                        Intent intent = new Intent(turnProfileOffActivity.this, MainActivity.class);
+//                        startActivity(intent);
 
                     }
                 });

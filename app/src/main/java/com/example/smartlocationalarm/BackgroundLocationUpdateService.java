@@ -55,7 +55,7 @@ public class BackgroundLocationUpdateService extends Service implements GoogleAp
     /* Declared in manifest
     <service android:name=".BackgroundLocationUpdateService"/>
     */
-    AudioManager am=(AudioManager) getSystemService(Context.AUDIO_SERVICE);
+    AudioManager am;
 
     private final String TAG = "BackgroundLocationUS";
     private final String TAG_LOCATION = "TAG_LOCATION";
@@ -85,7 +85,7 @@ public class BackgroundLocationUpdateService extends Service implements GoogleAp
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         StartForeground();
-        Log.d("back","service running");
+        Log.d("bgService","service running");
         final Handler handler = new Handler();
         final Runnable runnable = new Runnable() {
             @Override
@@ -218,6 +218,7 @@ public class BackgroundLocationUpdateService extends Service implements GoogleAp
                             if (status) {
                                 Log.d(TAG_LOCATION, "I'm in range! the alarm should notify :)");
                                 /*Silent Mode code*/
+                                am=(AudioManager) getSystemService(Context.AUDIO_SERVICE);
                                 am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
                                 /* Notification Code*/
                                 final int notificationId = 1111;
@@ -267,8 +268,14 @@ public class BackgroundLocationUpdateService extends Service implements GoogleAp
 //                            });
 
                                 /* end Notification Code */
+                            } else{
+                                if ((test(latDest, logDest, location.getLatitude(), location.getLongitude())<=radius)) {
+                                    am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+                                    am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+                                }
                             }
                         }
+
                     }
                 }
                 @Override
