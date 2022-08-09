@@ -19,21 +19,29 @@ Android Phone Silencer is an Android Application that enables the user to automa
 
 ## **Snapshots:**
 
-### Encrypt Tab
-![Encrypt](https://raw.githubusercontent.com/AryanP45/File-protection-system/master/resource_md/encrypt.PNG)
+- ### ___Start Screen___
+    ![Lander](https://raw.githubusercontent.com/AryanP45/Android-phone-silencer/main/screenshots(Readme)/1_startPage.png)
 
-### Decrypt Tab
-![Encrypt](https://raw.githubusercontent.com/AryanP45/File-protection-system/master/resource_md/decrypt.PNG)
+- ### ___Home Screen___
+    ![Home](https://raw.githubusercontent.com/AryanP45/Android-phone-silencer/main/screenshots(Readme)/2_homePage.png)
 
-### Backup Tab
-![Encrypt](https://raw.githubusercontent.com/AryanP45/File-protection-system/master/resource_md/backup.PNG)
+- ### ___Navigation Screen___
+    ![Navigation](https://raw.githubusercontent.com/AryanP45/Android-phone-silencer/main/screenshots(Readme)/3_listScreen.png)
 
-### Restore Tab
-![Encrypt](https://raw.githubusercontent.com/AryanP45/File-protection-system/master/resource_md/restore.PNG)
+- ### ___Create Profile Screen___
+    ![Create](https://raw.githubusercontent.com/AryanP45/Android-phone-silencer/main/screenshots(Readme)/4_createScreen.png)
 
-### About Tab
-![Encrypt](https://raw.githubusercontent.com/AryanP45/File-protection-system/master/resource_md/about.PNG)
+- ### ___Create Profile <u>PopUp</u> Screen___
+    ![Popup](https://raw.githubusercontent.com/AryanP45/Android-phone-silencer/main/screenshots(Readme)/5_createProfilePopup.png)
 
+- ### ___Tracking  Screen___
+    ![Tracking](https://raw.githubusercontent.com/AryanP45/Android-phone-silencer/main/screenshots(Readme)/6_trackingScreen.png)
+
+- ### ___All Profile List Screen___
+    ![AllProfiles](https://raw.githubusercontent.com/AryanP45/Android-phone-silencer/main/screenshots(Readme)/7_allProfileScreen.png)
+
+- ### ___About Screen___
+    ![About](https://raw.githubusercontent.com/AryanP45/Android-phone-silencer/main/screenshots(Readme)/8_aboutScreen.png)
 
   <!-- CONTRIBUTING -->
 
