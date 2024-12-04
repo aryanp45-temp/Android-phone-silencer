@@ -1,13 +1,13 @@
 <h1 align="center">
 
-![GitHub followers](https://img.shields.io/github/followers/AryanP45?color=Blue&style=social)
-![GitHub forks](https://img.shields.io/github/forks/AryanP45/Android-phone-silencer?style=social)
-![GitHub Repo stars](https://img.shields.io/github/stars/AryanP45/Android-phone-silencer?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/AryanP45/Android-phone-silencer?style=social)
+![GitHub followers](https://img.shields.io/github/followers/aryanp45-temp?color=Blue&style=social)
+![GitHub forks](https://img.shields.io/github/forks/aryanp45-temp/Android-phone-silencer?style=social)
+![GitHub Repo stars](https://img.shields.io/github/stars/aryanp45-temp/Android-phone-silencer?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/aryanp45-temp/Android-phone-silencer?style=social)
 ![APM](https://img.shields.io/apm/l/vim-mode?style=social)  
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/AryanP45/Android-phone-silencer)
-![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/Aryanp45/Android-phone-silencer?label=Pull%20Requests)
-![GitHub issues](https://img.shields.io/github/issues/Aryanp45/Android-phone-silencer?label=Issues)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/aryanp45-temp/Android-phone-silencer)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/aryanp45-temp/Android-phone-silencer?label=Pull%20Requests)
+![GitHub issues](https://img.shields.io/github/issues/aryanp45-temp/Android-phone-silencer?label=Issues)
 <hr>
 
 **Smart Location Silencer**
@@ -20,28 +20,28 @@ Android Phone Silencer is an Android Application that enables the user to automa
 ## **Snapshots:**
 
 - ### ___Start Screen___
-    ![Lander](https://raw.githubusercontent.com/AryanP45/Android-phone-silencer/main/screenshots(Readme)/1_startPage.png)
+    ![Lander](https://raw.githubusercontent.com/aryanp45-temp/Android-phone-silencer/main/screenshots(Readme)/1_startPage.png)
 
 - ### ___Home Screen___
-    ![Home](https://raw.githubusercontent.com/AryanP45/Android-phone-silencer/main/screenshots(Readme)/2_homePage.png)
+    ![Home](https://raw.githubusercontent.com/aryanp45-temp/Android-phone-silencer/main/screenshots(Readme)/2_homePage.png)
 
 - ### ___Navigation Screen___
-    ![Navigation](https://raw.githubusercontent.com/AryanP45/Android-phone-silencer/main/screenshots(Readme)/3_listScreen.png)
+    ![Navigation](https://raw.githubusercontent.com/aryanp45-temp/Android-phone-silencer/main/screenshots(Readme)/3_listScreen.png)
 
 - ### ___Create Profile Screen___
-    ![Create](https://raw.githubusercontent.com/AryanP45/Android-phone-silencer/main/screenshots(Readme)/4_createScreen.png)
+    ![Create](https://raw.githubusercontent.com/aryanp45-temp/Android-phone-silencer/main/screenshots(Readme)/4_createScreen.png)
 
 - ### ___Create Profile <u>PopUp</u> Screen___
-    ![Popup](https://raw.githubusercontent.com/AryanP45/Android-phone-silencer/main/screenshots(Readme)/5_createProfilePopup.png)
+    ![Popup](https://raw.githubusercontent.com/aryanp45-temp/Android-phone-silencer/main/screenshots(Readme)/5_createProfilePopup.png)
 
 - ### ___Tracking  Screen___
-    ![Tracking](https://raw.githubusercontent.com/AryanP45/Android-phone-silencer/main/screenshots(Readme)/6_trackingScreen.png)
+    ![Tracking](https://raw.githubusercontent.com/aryanp45-temp/Android-phone-silencer/main/screenshots(Readme)/6_trackingScreen.png)
 
 - ### ___All Profile List Screen___
-    ![AllProfiles](https://raw.githubusercontent.com/AryanP45/Android-phone-silencer/main/screenshots(Readme)/7_allProfileScreen.png)
+    ![AllProfiles](https://raw.githubusercontent.com/aryanp45-temp/Android-phone-silencer/main/screenshots(Readme)/7_allProfileScreen.png)
 
 - ### ___About Screen___
-    ![About](https://raw.githubusercontent.com/AryanP45/Android-phone-silencer/main/screenshots(Readme)/8_aboutScreen.png)
+    ![About](https://raw.githubusercontent.com/aryanp45-temp/Android-phone-silencer/main/screenshots(Readme)/8_aboutScreen.png)
 
   <!-- CONTRIBUTING -->
 
@@ -57,7 +57,7 @@ Contributions are what make the open source community such an amazing place to b
 
 ## ✍️ Authors
 
-- [@AryanPatil](https://www.github.com/AryanP45)
+- [@AryanPatil](https://www.github.com/aryanp45-temp)
 - [@AyushBhavsar](https://www.github.com/AyushBhavsar)
 
   
